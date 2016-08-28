@@ -1,0 +1,10 @@
+nodedock: 
+  image: registry.ng.bluemix.net/microdev/microdev/nodedock
+  ports:
+   - "request:8080:8080"
+  links: 
+    - mongo
+mongo:
+  image: mongo
+  expose:
+    - "27017"

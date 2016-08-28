@@ -1,0 +1,25 @@
+Vuosikello:
+- kvartaali steering group
+- kvartaali onboardaus
+- offboardaus pari kertaa vuodessa
+- tietoiskut (thinktime)
+- 
+
+problem:
+steering:
+	1kk ennen pitää tehdä muistutus
+	2vk ennen materiaalit
+	1vk lähetä materiaalit
+	itse kokous
+	meeting mins jälkeen
+
+
+toivotaan:
+	viikkonäkymä tjsp
+	ilmoitus etukäteen
+	seuraavan kk tapahtumat
+	assignaus
+	steering group ennalta määrätyt välistepit
+	välistepit ilmoittaa etukäteen
+
+visuaalisesti lista 
