@@ -4,8 +4,9 @@ Application which helps one to manage events by breaking the event down to piece
 
 Dockerised and microservice based, other repos:
 
-front-end:
-email-service:
+front-end: https://github.com/mikaelsn/eventnotifier-frontEnd
+
+email-service: https://github.com/mikaelsn/eventnotifier-emailService/tree/master
 
 Running at:
 
