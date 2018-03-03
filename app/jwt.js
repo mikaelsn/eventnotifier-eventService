@@ -13,10 +13,8 @@ function JWT() {
 JWT.prototype.verify = function(token, userKey) {
   var secret = this.secret(userKey);
   var isValid = jsrsasign.jws.JWS.verifyJWT(token,
-    secret,
-    {
-      alg: [JWT_ENCODING_ALGORITHM],
-      verifyAt: new Date().getTime()});
+    secret, { alg: [JWT_ENCODING_ALGORITHM],
+      verifyAt: new Date().getTime() });
   return isValid;
 };
 

@@ -24,7 +24,6 @@ function isAuthenticated(req, res, next) {
   // Verify JWT
   KeyService.get(payload.jti)
     .then(function(userKey) {
-      console.log("token: " +token + " userk: "+ userKey);
       var authenticated = JWT.verify(token, userKey);
       if (authenticated) {
         return next();

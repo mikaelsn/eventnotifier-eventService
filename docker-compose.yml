@@ -1,10 +1,54 @@
-nodedock: 
+es:
+    image: elasticsearch:1.7
+    command: elasticsearch -Des.index.analysis.analyzer.default.type=keyword
+    ports:
+        - "29200:9200"
+        - "29300:9300"
+logstash:
+    image: logstash
+    command: logstash -e " input {udp {codec=>json port=>8093}} output {elasticsearch {hosts=>es index=>gremlin}} "
+    ports:
+        - "8093:8093/udp"
+    links:
+        - es
+eventservice:
   build: .
-  ports: 
+  environment:
+    - TZ=Europe/Helsinki
+  ports:
     - "8080:8080"
-  links: 
+    - "9010:9010"
+  links:
     - mongo
+    - emailservice
+    - redis
 mongo:
   image: mongo
   expose:
     - "27017"
+emailservice:
+  build: ../eventnotifier-emailService
+  ports:
+    - "8081:8081"
+authmongo:
+  image: mongo
+  ports:
+    - "28001:27017"
+redis:
+  image: redis
+  ports:
+   - "6379:6379"
+authservice:
+  build: ../eventnotifier-authService
+  ports:
+    - "8083:8083"
+    - "5858:5858"
+  links:
+    - redis
+    - authmongo
+hystrix:
+  image: kennedyoliveira/hystrix-dashboard
+  ports: 
+    - "7979:7979"
+  links:
+    - eventservice

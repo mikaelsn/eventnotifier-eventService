@@ -1,4 +1,4 @@
-FROM node:argon
+FROM node:9.5
 
 # Create app directory
 RUN mkdir -p /usr/src/app
@@ -12,4 +12,4 @@ RUN npm install
 COPY . /usr/src/app
 
 EXPOSE 8080
-CMD [ "node", "app.js" ]
+CMD [ "node", "app/app.js" ]

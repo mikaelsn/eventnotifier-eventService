@@ -15,7 +15,7 @@ function populateDb() {
 
 
   var event = new EventsModel({
-    user: 'baarimikke@hotmail.com',
+    user: 'emai123l@email.com',
     name: 'CbD event',
     description: 'Vuosittainen eventti'
   });
@@ -55,7 +55,7 @@ function populateDb() {
   });
 
   var event1 = new EventsModel({
-    user: 'baarimikke@hotmail.com',
+    user: 'email123@email.com',
     name: 'CbD quarter steering',
     description: 'CbD administrative event'
   });
@@ -75,6 +75,46 @@ function populateDb() {
       event1.eventItems.push(eventItem);
 
       event1.save(function (err) {
+        if (err) console.log(err);
+      });
+    });
+  });
+
+  var event3 = new EventsModel({
+    user: 'email123@email.com',
+    name: 'CbD event3',
+    description: 'Event'
+  });
+
+  event3.save(function (err) {
+    if (err) console.log(err);
+
+    var eventItem = new EventItemsModel({
+      _event: event3._id,
+      name: 'Send email',
+      description: 'Email to group'
+    });
+
+
+    var eventItem1 = new EventItemsModel({
+      _event: event3._id,
+      name: 'Test event',
+      description: 'Note event'
+    });
+
+    eventItem.save(function (err) {
+      if (err) console.log(err);
+      event3.eventItems.push(eventItem);
+      event3.save(function (err) {
+        if (err) console.log(err);
+      });
+    });
+
+    eventItem1.save(function (err) {
+      if (err) console.log(err);
+
+      event3.eventItems.push(eventItem1);
+      event3.save(function (err) {
         if (err) console.log(err);
       });
     });

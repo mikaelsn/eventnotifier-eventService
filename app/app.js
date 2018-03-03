@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var nconf = require('nconf');
 nconf.file('./app/config.json');
 var api = require('./events');
+var email = require('./mailer');
 var auth = require('./auth');
 
 var populateDB = require('./populate-db');
@@ -29,9 +30,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //REST HTTP Methods
 app.get('/items', auth.isAuthenticated, api.list);
-app.get('/items/:id', api.find);
-app.post('/items/:id', api.update);
-app.post('/items', api.create);
+app.get('/items/:id', auth.isAuthenticated, api.find);
+app.post('/items/:id', auth.isAuthenticated, api.update);
+app.post('/items', auth.isAuthenticated, api.create);
+app.get('/email', email.email);
 
 app.listen(8080);
 console.log('App started on 8080 at ' + new Date());
